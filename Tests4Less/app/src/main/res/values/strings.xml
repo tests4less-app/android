@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"Tests4Less "</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_category">categorySearch</string>
+    <string name="compare">Compare Radiology</string>
+    <string name="proceed">Proceed</string>
+
+    <string name="with_pathalogy">With Pathalogy</string>
+    <string name="best_rated">BEST RATED</string>
+    <string name="best_value">BEST VALUE</string>
+    <string name="closest">CLOSEST</string>
+    <string name="shoe_labs">Showlabs with pathalogy and radiology</string>
+
+</resources>
