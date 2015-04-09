@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 public class TopRatedFragment extends Fragment {
 
@@ -13,8 +14,26 @@ public class TopRatedFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+
 		View rootView = inflater.inflate(R.layout.fragment_top_rated, container, false);
-		
+
+
+        ListView listView=(ListView)rootView.findViewById(R.id.listViewResult_top);
+
+        View header = (View)getActivity().getLayoutInflater().inflate(R.layout.listview_header_row, null);
+
+        topRated_sort();
+        ResultItem []array = new ResultItem[Backend.fetched.size()];
+        Backend.fetched.toArray(array);
+        ResultItemArrayAdapter topRatedAdapter =new ResultItemArrayAdapter(getActivity(), R.layout.listview_item_row, array);
+        listView.addHeaderView(header);
+
+        listView.setAdapter(topRatedAdapter);
+
+
 		return rootView;
 	}
+    public void topRated_sort(){
+        //sort fetched in toprated order
+    }
 }

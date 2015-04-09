@@ -16,8 +16,22 @@ public class ClosestFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_closest, container, false);
 
+        ListView listView=(ListView)rootView.findViewById(R.id.listViewResult_closest);
 
-		return rootView;
-	}
+        View header = (View)getActivity().getLayoutInflater().inflate(R.layout.listview_header_row, null);
 
+        closest_sort();
+        ResultItem []array = new ResultItem[Backend.fetched.size()];
+        Backend.fetched.toArray(array);
+        ResultItemArrayAdapter topRatedAdapter =new ResultItemArrayAdapter(getActivity(), R.layout.listview_item_row, array);
+        listView.addHeaderView(header);
+
+        listView.setAdapter(topRatedAdapter);
+
+
+        return rootView;
+    }
+    public void closest_sort(){
+        //sort fetched in closest order
+    }
 }
