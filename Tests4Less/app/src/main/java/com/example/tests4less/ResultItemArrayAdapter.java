@@ -14,17 +14,16 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-
-
-
+import java.util.ArrayList;
 
 
 public class ResultItemArrayAdapter extends ArrayAdapter<ResultItem> {
     Context context;
+   public ArrayList<ResultItem> data;
     int layoutResourceId;
-    ResultItem  data[] = null;
+   // ResultItem  data[] = null;
 
-    public ResultItemArrayAdapter(Context context, int layoutResourceId, ResultItem [] data) {
+    public ResultItemArrayAdapter(Context context, int layoutResourceId, ArrayList<ResultItem> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -59,13 +58,13 @@ public class ResultItemArrayAdapter extends ArrayAdapter<ResultItem> {
             holder = (ResultHolder)row.getTag();
         }
 
-        ResultItem tmp = data[position];
+        ResultItem tmp = data.get(position);
         holder.name.setText(tmp.name);
         holder.priceActual.setText(Integer.toString(tmp.priceActual));
 
         holder.priceOffered.setText(Integer.toString(tmp.priceOffered));
         holder.place.setText(tmp.place);
-        holder.ratingAVG.setRating(tmp.ratingAVG);
+        holder.ratingAVG.setRating(tmp.ratingAVG.floatValue());
         holder.ratingNO.setText("("+Integer.toString(tmp.ratingNo)+" ratings)");
         holder.features.setText(tmp.features);
 
@@ -81,6 +80,17 @@ public class ResultItemArrayAdapter extends ArrayAdapter<ResultItem> {
         RatingBar ratingAVG;
 
 
+///
+    }
 
+    public void updateAdapter(ArrayList<ResultItem> newlist) {
+
+
+
+
+        //data.clear();
+        //data.addAll(newlist);
+        data =newlist;
+        this.notifyDataSetChanged();
     }
 }

@@ -1,12 +1,17 @@
 package com.example.tests4less;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
@@ -60,39 +65,52 @@ public class MainActivity extends Activity implements AnimationListener {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		// load the animation
-				animSideDown = AnimationUtils.loadAnimation(getApplicationContext(),
-						R.anim.slide_down);
-				
-				// set animation listener
-				animSideDown.setAnimationListener(this);
-				
-		CustomList adapter = new
-				CustomList(MainActivity.this, web, imageId);
-		list=(ListView)findViewById(R.id.list);
-		list.setVisibility(View.INVISIBLE);
-				list.setAdapter(adapter);
-				list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		            @Override
-		            public void onItemClick(AdapterView<?> parent, View view,
-		                                    int position, long id) {
-		                Intent category = new Intent(MainActivity.this,CategorySearch.class);
-		                startActivity(category);
+        // load the animation
+        animSideDown = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_down);
 
-		            }
-		        });
-				
-		
-				
+        // set animation listener
+        animSideDown.setAnimationListener(this);
 
-				
-				
-				
-	}
+        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        String[] items = new String[]{"Your Location", "indore","bhopal"};
+        ArrayAdapter<String> adapterdropdown = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        dropdown.setAdapter(adapterdropdown);
+
+        CustomList adapter = new
+                CustomList(MainActivity.this, web, imageId);
+        list=(ListView)findViewById(R.id.list);
+        list.setVisibility(View.INVISIBLE);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                //getting loaction on click search
+                /*LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                double longitude = location.getLongitude();
+                double latitude = location.getLatitude();
+*/
+                double longitude = 0;
+                double latitude =0;
+                Intent category = new Intent(MainActivity.this,CategorySearch.class);
+                category.putExtra("position", longitude+" "+latitude);
+                startActivity(category);
+
+            }
+        });
+
+
+
+
+
+
+    }
 	
 	public void showSearch(View v){
 		list= (ListView) findViewById(R.id.list);

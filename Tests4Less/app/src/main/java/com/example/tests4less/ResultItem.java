@@ -7,15 +7,15 @@ package com.example.tests4less;
 
 public class ResultItem {
     public int icon,priceActual,priceOffered,ratingNo;
-    public float ratingAVG,PostionLong,PostitionLat;
-    public String name,place,features;
+    public Double ratingAVG,PostionLong,PostitionLat;
+    public String name,place,features,imgURL;
 
 
     public ResultItem() {
         super();
     }
 
-    public ResultItem(int icon, String name,String place,int priceActual,int priceOffered,int ratingNo,float ratingAVG,float longi,float lati,String features) {
+    public ResultItem(int icon, String name,String place,int priceActual,int priceOffered,int ratingNo,Double ratingAVG,Double longi,Double lati,String features) {
         super();
         this.icon = icon;
         this.name = name;

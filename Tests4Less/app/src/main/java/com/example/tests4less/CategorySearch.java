@@ -5,11 +5,14 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ListView;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 //10 april
@@ -20,6 +23,7 @@ public class CategorySearch extends FragmentActivity implements
 	private ViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
+    static ProgressDialog pDialog;
 
 	// Tab titles
 	private String[] tabs = { "Top Rated", "Cheapest", "Closest" };
@@ -29,7 +33,21 @@ public class CategorySearch extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 
-        Backend.fetchdata();//fetches data and stores them in fetched[] Array
+
+        if(Backend.NeedUpdate) {
+
+            pDialog = new ProgressDialog(this);
+            pDialog.setMessage("Loading...");
+            pDialog.show();
+            try {
+                Backend.fetchdata();//fetches data and stores them in fetched[] Array
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
 
         // Initilization
 		viewPager = (ViewPager) findViewById(R.id.pager);

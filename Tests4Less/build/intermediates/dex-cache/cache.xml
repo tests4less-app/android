@@ -14,6 +14,12 @@
         revision="21.0.0"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03"/>
     <item
+        dex="F:\coding\Tests4Less\app\build\intermediates\pre-dexed\debug\classes-e87c52d76568af00f2a13ec01e35291abc382e15.jar"
+        jar="F:\coding\Tests4Less\app\build\intermediates\exploded-aar\Tests4Less\volley\unspecified\classes.jar"
+        jumboMode="false"
+        revision="21.0.0"
+        sha1="6a30c94d9e69a99edeced4dc0e3aa5809397380b"/>
+    <item
         dex="F:\coding\Tests4Less\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-5722210967f203a25b99adce912cda035d69eedc.jar"
         jar="F:\softs\Installs\studio\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"

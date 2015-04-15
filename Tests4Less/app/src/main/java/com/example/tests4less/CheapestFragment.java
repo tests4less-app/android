@@ -26,7 +26,7 @@ public class CheapestFragment extends Fragment {
         cheapest_sort();
         ResultItem []array = new ResultItem[Backend.fetched.size()];
         Backend.fetched.toArray(array);
-        ResultItemArrayAdapter topRatedAdapter =new ResultItemArrayAdapter(getActivity(), R.layout.listview_item_row, array);
+        ResultItemArrayAdapter topRatedAdapter =new ResultItemArrayAdapter(getActivity(), R.layout.listview_item_row, Backend.fetched);
         listView.addHeaderView(header);
 
         listView.setAdapter(topRatedAdapter);
